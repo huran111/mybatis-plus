@@ -1,5 +1,6 @@
 package com.mybatis.plus;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.mybatis.plus.entity.User;
 import com.mybatis.plus.mapper.UserMapper;
 import org.junit.Assert;
@@ -59,8 +60,17 @@ public class MybatisPlusApplicationTests {
      */
     @Test
     public void bDelete() {
-        userMapper.deleteById(1L > 0);
+        userMapper.deleteById(1L);
         List<User> users = userMapper.selectList(null);
         users.forEach(System.out::println);
+    }
+
+    /**
+     * 查询
+     */
+    @Test
+    public void aSelect() {
+        User user = userMapper.selectOne(new QueryWrapper<User>().lambda().eq(User::getId, 2));
+        System.out.println(user.toString());
     }
 }
