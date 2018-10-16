@@ -1,5 +1,8 @@
 package com.mybatis.plus.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.KeySequence;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -12,9 +15,13 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
+@KeySequence("SEQ_USER")
+
 public class User {
+    @TableId(value = "id", type = IdType.INPUT)
     private Long id;
     private String name;
     private Integer age;
     private String email;
+    private Long roleId;
 }
